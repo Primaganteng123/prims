@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Kompresi Media - Informatics Tools</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto:wght@400;500&display=swap');
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-content {
+            flex: 1 0 auto;
+        }
+
+        footer {
+            flex-shrink: 0;
+            background: linear-gradient(90deg, #38bdf8 0%, #818cf8 100%);
+            color: #222;
+            text-align: center;
+            font-size: 1rem;
+            border-radius: 2rem 2rem 0 0;
+            box-shadow: 0 -2px 16px #818cf822;
+            border-top: 3px solid #0ea5e9;
+            padding: 1.2rem 0 0.5rem 0;
+            margin-top: 0;
+        }
+
+        body {
+            background: #0f172a;
+            min-height: 100vh;
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            z-index: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(135deg, rgba(56, 189, 248, 0.04) 0 2px, transparent 2px 40px), repeating-linear-gradient(45deg, rgba(139, 92, 246, 0.04) 0 2px, transparent 2px 40px);
+            pointer-events: none;
+        }
+
+        .navbar {
+            background: linear-gradient(90deg, #312e81 0%, #0ea5e9 100%);
+            font-family: 'Orbitron', 'Roboto', Arial, sans-serif;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 16px #818cf822;
+        }
+
+        .navbar-brand,
+        .nav-link,
+        .navbar-brand:focus,
+        .nav-link:focus {
+            color: #fff !important;
+        }
+
+        .navbar-brand {
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .nav-link.active {
+            color: #38bdf8 !important;
+            font-weight: 600;
+        }
+
+        .main-header {
+            background: linear-gradient(90deg, #312e81 0%, #0ea5e9 100%);
+            color: #fff;
+            padding: 2.2rem 0 1.2rem 0;
+            border-radius: 0 0 2.5rem 2.5rem;
+            box-shadow: 0 4px 32px rgba(14, 165, 233, 0.18);
+            margin-bottom: 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-header .icon-lg {
+            font-size: 3.2rem;
+            color: #38bdf8;
+            text-shadow: 0 0 16px #818cf8, 0 0 32px #0ea5e9;
+            animation: iconPop 1.2s cubic-bezier(.4, 2, .6, 1) infinite alternate;
+        }
+
+        @keyframes iconPop {
+            0% {
+                transform: scale(1) rotate(-3deg);
+            }
+
+            100% {
+                transform: scale(1.13) rotate(3deg);
+            }
+        }
+
+        .main-header h1 {
+            font-family: 'Orbitron', 'Roboto', Arial, sans-serif;
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 16px #0ea5e9;
+        }
+
+        .main-header p {
+            font-size: 1.1rem;
+            color: #bae6fd;
+            text-shadow: 0 1px 8px #0ea5e9;
+        }
+
+        .card-modern {
+            border: none;
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 40px rgba(56, 189, 248, 0.13);
+            background: rgba(30, 41, 59, 0.82);
+            backdrop-filter: blur(8px) saturate(1.2);
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+        }
+
+        .card-modern:hover {
+            transform: translateY(-8px) scale(1.04) rotate(-1deg);
+            box-shadow: 0 20px 64px 0 rgba(139, 92, 246, 0.18);
+            background: rgba(30, 41, 59, 0.93);
+        }
+
+        .card-title,
+        .card-title i {
+            color: #38bdf8;
+            font-family: 'Orbitron', 'Roboto', Arial, sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: #818cf8;
+        }
+
+        .form-control {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            border: 1.5px solid #818cf8;
+            border-radius: 0.7rem;
+        }
+
+        .form-control:focus {
+            background: rgba(255, 255, 255, 0.18);
+            border-color: #38bdf8;
+            color: #fff;
+            box-shadow: 0 0 0 2px #38bdf833;
+        }
+
+        .btn-dark {
+            background: linear-gradient(90deg, #0ea5e9 0%, #6366f1 100%);
+            color: #fff;
+            border: none;
+            border-radius: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 12px 0 #818cf822;
+            transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+        }
+
+        .btn-dark:hover {
+            box-shadow: 0 6px 24px #818cf855;
+            transform: scale(1.07) translateY(-2px);
+            filter: brightness(1.09);
+        }
+
+        .btn-secondary {
+            border-radius: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .alert-info {
+            border-radius: 1rem;
+            font-size: 1.1rem;
+            background: linear-gradient(90deg, #818cf8 0%, #38bdf8 100%);
+            color: #fff;
+            border: none;
+            box-shadow: 0 2px 16px #818cf822;
+        }
+
+        @media (max-width: 576px) {
+            .main-header {
+                padding: 1.2rem 0 0.7rem 0;
+                border-radius: 0 0 1.2rem 1.2rem;
+            }
+
+            .main-header h1 {
+                font-size: 1.3rem;
+            }
+
+            .card-modern {
+                border-radius: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="bi bi-pc-display-horizontal"></i> Informatics Tools</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="convert.html">Konversi</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="compress.html">Kompresi</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="main-header text-center mb-4">
+        <div class="container position-relative">
+            <i class="bi bi-collection-play icon-lg mb-2"></i>
+            <h1 class="fw-bold mb-0">Kompresi Media Universal</h1>
+            <p class="lead mb-0">Kompresi gambar, video, audio, dokumen, dan file lain ke ukuran lebih kecil.</p>
+        </div>
+    </header>
+    <div class="main-content">
+        <div class="container py-3">
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-5">
+                    <div class="card card-modern">
+                        <div class="card-body">
+                            <form id="compressForm">
+                                <div class="mb-3">
+                                    <label for="mediafile" class="form-label">Pilih Media (Gambar, Video, Audio,
+                                        Dokumen, dll)</label>
+                                    <input type="file" name="mediafile" id="mediafile" class="form-control"
+                                        accept="image/*,video/*,audio/*,.pdf,.docx,.pptx,.xlsx,.txt,.csv" required>
+                                </div>
+                                <div class="d-grid">
+                                    <button type="button" onclick="compressMedia()" class="btn btn-dark"><i
+                                            class="bi bi-magic me-1"></i>Kompres Media</button>
+                                </div>
+                            </form>
+                            <div id="result" class="alert alert-info mt-4 text-center d-none" role="alert">
+                                <i class="bi bi-info-circle-fill"></i>
+                                <span id="resultText"></span><br>
+                                <a href="#" id="downloadLink" class="btn btn-primary mt-2 d-none" download><i
+                                        class="bi bi-download"></i> Download Hasil Kompresi</a>
+                            </div>
+                            <a href="index.html" class="btn btn-secondary mt-4"><i class="bi bi-house-door"></i> Kembali
+                                ke Home</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        &copy; 2024 Informatics Tools &mdash; All rights reserved.
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function compressMedia() {
+            const fileInput = document.getElementById('mediafile');
+            const resultDiv = document.getElementById('result');
+            const resultText = document.getElementById('resultText');
+            const downloadLink = document.getElementById('downloadLink');
+
+            if (!fileInput.files.length) {
+                resultDiv.classList.remove('d-none');
+                resultDiv.classList.remove('alert-info');
+                resultDiv.classList.add('alert-danger');
+                resultText.textContent = 'Pilih file terlebih dahulu.';
+                return;
+            }
+
+            const file = fileInput.files[0];
+            const fileSize = file.size;
+            const fileType = file.type;
+            const fileName = file.name;
+            const fileExt = fileName.split('.').pop().toLowerCase();
+
+            // Simulasi kompresi
+            const compressedSize = Math.round(fileSize * 0.6);
+            const compressionRatio = ((fileSize - compressedSize) / fileSize * 100).toFixed(2);
+
+            resultDiv.classList.remove('d-none');
+            resultDiv.classList.remove('alert-danger');
+            resultDiv.classList.add('alert-info');
+
+            // Contoh tipe file yang didukung
+            const allowedImages = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+            const allowedVideos = ['mp4', 'avi', 'mov', 'mkv', 'webm'];
+            const allowedAudios = ['mp3', 'wav', 'aac', 'ogg', 'm4a'];
+
+            let resultMessage = '';
+            if (allowedImages.includes(fileExt)) {
+                resultMessage = `Gambar dikompres. Ukuran sebelum: ${(fileSize / 1024).toFixed(2)} KB, sesudah: ${(compressedSize / 1024).toFixed(2)} KB (${compressionRatio}% terkompresi)`;
+            } else if (allowedVideos.includes(fileExt)) {
+                resultMessage = `Video dikompres. Ukuran sebelum: ${(fileSize / 1024).toFixed(2)} KB, sesudah: ${(compressedSize / 1024).toFixed(2)} KB (${compressionRatio}% terkompresi)`;
+            } else if (allowedAudios.includes(fileExt)) {
+                resultMessage = `Audio dikompres. Ukuran sebelum: ${(fileSize / 1024).toFixed(2)} KB, sesudah: ${(compressedSize / 1024).toFixed(2)} KB (${compressionRatio}% terkompresi)`;
+            } else {
+                resultMessage = `File dikompres. Ukuran sebelum: ${(fileSize / 1024).toFixed(2)} KB, sesudah: ${(compressedSize / 1024).toFixed(2)} KB (${compressionRatio}% terkompresi)`;
+            }
+
+            resultText.textContent = resultMessage;
+            downloadLink.classList.remove('d-none');
+            downloadLink.href = '#'; // Simulasi link download
+        }
+    </script>
+</body>
+
+</html>
